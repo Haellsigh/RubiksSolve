@@ -60,22 +60,37 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define B1_Pin GPIO_PIN_13
 #define B1_GPIO_Port GPIOC
+#define B1_EXTI_IRQn EXTI15_10_IRQn
 #define USART_TX_Pin GPIO_PIN_2
 #define USART_TX_GPIO_Port GPIOA
 #define USART_RX_Pin GPIO_PIN_3
 #define USART_RX_GPIO_Port GPIOA
-#define LD2_Pin GPIO_PIN_5
-#define LD2_GPIO_Port GPIOA
-#define DIR_Pin GPIO_PIN_10
-#define DIR_GPIO_Port GPIOB
-#define STEP_Pin GPIO_PIN_8
-#define STEP_GPIO_Port GPIOA
-#define TMS_Pin GPIO_PIN_13
-#define TMS_GPIO_Port GPIOA
-#define TCK_Pin GPIO_PIN_14
-#define TCK_GPIO_Port GPIOA
-#define SWO_Pin GPIO_PIN_3
-#define SWO_GPIO_Port GPIOB
+#define LED1_Pin GPIO_PIN_5
+#define LED1_GPIO_Port GPIOA
+#define DIR3_Pin GPIO_PIN_5
+#define DIR3_GPIO_Port GPIOC
+#define STEP4_Pin GPIO_PIN_10
+#define STEP4_GPIO_Port GPIOB
+#define DIR6_Pin GPIO_PIN_13
+#define DIR6_GPIO_Port GPIOB
+#define DIR5_Pin GPIO_PIN_14
+#define DIR5_GPIO_Port GPIOB
+#define DIR4_Pin GPIO_PIN_15
+#define DIR4_GPIO_Port GPIOB
+#define DIR2_Pin GPIO_PIN_6
+#define DIR2_GPIO_Port GPIOC
+#define DIR1_Pin GPIO_PIN_8
+#define DIR1_GPIO_Port GPIOC
+#define STEP1_Pin GPIO_PIN_9
+#define STEP1_GPIO_Port GPIOC
+#define STEP5_Pin GPIO_PIN_4
+#define STEP5_GPIO_Port GPIOB
+#define STEP6_Pin GPIO_PIN_5
+#define STEP6_GPIO_Port GPIOB
+#define STEP2_Pin GPIO_PIN_8
+#define STEP2_GPIO_Port GPIOB
+#define STEP3_Pin GPIO_PIN_9
+#define STEP3_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
