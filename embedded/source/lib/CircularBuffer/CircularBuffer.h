@@ -59,7 +59,7 @@ class CircularBuffer {
     return size;
   }
 
-  bool removeUntil(T item) const {
+  bool removeUntil(T item) {
     while (!empty()) {
       if (get() == item)
         return true;
