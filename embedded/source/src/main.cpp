@@ -9,12 +9,21 @@
 
 // Motor configurations
 rubiks::MotorConfiguration motor[6] = {
+#if defined(STM32F401)
     {PB13, PB14},  //
     {PB15, PB1},   //
     {PA4, PB0},    //
     {PC1, PC0},    //
     {PB10, PB4},   //
     {PB5, PB3}     //
+#elif defined(STM32F303)
+    {PA12, PB0},  //
+    {PB7, PB6},   //
+    {PB1, PF0},   //
+    {PF1, PA8},   //
+    {PA11, PB5},  //
+    {PA5, PA4}    //
+#endif
 };
 
 rubiks::commandmanager commandManager;
@@ -59,6 +68,12 @@ void loop() {
   if (!steppers.run() && commandManager.hasNextCommand()) {
     // Retrieve next movement
     auto cmd = commandManager.getNextCommand();
+
+    Serial.print("motor[");
+    Serial.print(cmd.motor);
+    Serial.print("] += ");
+    Serial.println(cmd.movement);
+
     // Increment position
     size_t iMotor = cmd.motor - 1;
     positions[iMotor] += cmd.movement * motor[iMotor].quarterTurn();
