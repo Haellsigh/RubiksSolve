@@ -18,7 +18,7 @@ struct MotorConfiguration {
   uint32_t stepsPerRevolution = 200;
   uint32_t microstepping      = 8;
 
-  uint32_t maxRPM = 200;
+  uint32_t maxRPM = 250;
 
   uint32_t maxStepsPerSecond() {
     if (mMaxStepsPerSecondComputed)

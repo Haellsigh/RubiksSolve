@@ -10,12 +10,13 @@
 // Motor configurations
 rubiks::MotorConfiguration motor[6] = {
 #if defined(STM32F401)
-    {PB13, PB14},  //
-    {PB15, PB1},   //
-    {PA4, PB0},    //
-    {PC1, PC0},    //
-    {PB10, PB4},   //
-    {PB5, PB3}     //
+    // step, dir
+    {PB14, PB13},  // Moteur 1, blanc
+    {PB15, PB1},   // Moteur 2, bleu
+    {PB3, PA10},   // Moteur 3, rouge
+    {PB5, PB4},    // Moteur 4, orange
+    {PA8, PB10},   // Moteur 5, vert
+    {PA9, PC7}     // Moteur 6, jaune
 #elif defined(STM32F303)
     {PA12, PB0},  //
     {PB7, PB6},   //
@@ -49,16 +50,15 @@ void setup() {
 
   for (int i = 0; i < 6; i++) {
     stepper[i].setMaxSpeed(motor[0].maxStepsPerSecond());
-    stepper[i].setAcceleration(10);
+    // stepper[i].setAcceleration(1);
     steppers.addStepper(stepper[i]);
   }
 }
 
 void loop() {
   // Parse bytes one by one
-  if (Serial.available() > 0) {
+  while (Serial.available() > 0) {
     int data = Serial.read();
-    Serial.write(data);
     if (data >= 0) {
       commandManager.receiveNewData(data);
     }
@@ -69,14 +69,25 @@ void loop() {
     // Retrieve next movement
     auto cmd = commandManager.getNextCommand();
 
-    Serial.print("motor[");
-    Serial.print(cmd.motor);
-    Serial.print("] += ");
-    Serial.println(cmd.movement);
-
     // Increment position
     size_t iMotor = cmd.motor - 1;
     positions[iMotor] += cmd.movement * motor[iMotor].quarterTurn();
+
+    delay(50);
+
+    Serial.print("1: ");
+    Serial.print(positions[0]);
+    Serial.print(", 2: ");
+    Serial.print(positions[1]);
+    Serial.print(", 3: ");
+    Serial.print(positions[2]);
+    Serial.print(", 4: ");
+    Serial.print(positions[3]);
+    Serial.print(", 5: ");
+    Serial.print(positions[4]);
+    Serial.print(", 6: ");
+    Serial.println(positions[5]);
+
     // Schedule the movement
     steppers.moveTo(positions);
   }
