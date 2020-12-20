@@ -7,6 +7,8 @@
 #include <MotorConfiguration.h>
 #include <commandmanager.h>
 
+#include <AS5600.h>
+
 // Motor configurations
 rubiks::MotorConfiguration motor[6] = {
 #if defined(STM32F401)
@@ -38,6 +40,8 @@ AccelStepper stepper[6] = {
     {AccelStepper::DRIVER, motor[5].step, motor[5].dir},
 };
 MultiStepper steppers;
+
+//AMS_5600 ams5600;
 
 long positions[6] = {0, 0, 0, 0, 0, 0};
 
