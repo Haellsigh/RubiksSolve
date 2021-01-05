@@ -271,7 +271,7 @@
     },
     "net_format_name": "",
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": "outputs/",
     "spice_adjust_passive_values": false,
     "spice_external_command": "spice \"%I\"",
     "subpart_first_id": 65,
@@ -279,8 +279,12 @@
   },
   "sheets": [
     [
-      "cdf1a368-0b92-4cd9-b9f3-3c10069c01cf",
+      "ab4ce107-bce9-4cf6-bc1c-ffdfa6a9bcb4",
       ""
+    ],
+    [
+      "ab4ce107-bce9-4cf6-bc1c-ffdfa6a9bcb4",
+      "Power Stage"
     ]
   ],
   "text_variables": {}
